@@ -21,9 +21,10 @@ export const TopCars: React.FC<TopCarsType> = ({topCars}) => {
             <tbody>
             {topCars.map((c, index) =>
                 <tr key={index}>
-                    {c.manufacturer}
+                    <td>{c.manufacturer}</td>
                     <td>{c.model}</td>
-                </tr>)}
+                </tr>
+            )}
             </tbody>
         </table>
 
