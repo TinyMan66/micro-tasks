@@ -6,12 +6,8 @@ type ButtonType = {
 }
 export const Button: React.FC<ButtonType> = ({name, callBack}) => {
 
-    const onClickHandler = () => {
-        callBack()
-    }
-
     return (
-        <button onClick={onClickHandler}>{name}</button>
+        <button onClick={callBack}>{name}</button>
     );
 };
 
