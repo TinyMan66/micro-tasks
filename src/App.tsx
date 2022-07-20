@@ -4,6 +4,7 @@ import {TopCars} from "./Components/TopCars";
 import {Button} from "./Components/Button";
 import {MoneyFilter} from "./Components/MoneyFilter";
 import {FullInput} from "./Components/FullInput";
+import {Input} from "./Components/Input";
 
 export type FilterType = 'all' | 'dollars' | 'rubles';
 
@@ -66,10 +67,15 @@ function App() {
         {message: 'message2'},
         {message: 'message3'},
     ])
+    let [title, setTitle] = useState('');
 
     const addMessage = (title: string) => {
         let newMessage = {message: title}
         setMessage([newMessage, ...message]);
+    }
+    const callBackButtonHandler = () => {
+        addMessage(title);
+        setTitle('');
     }
 
     return (
@@ -90,7 +96,10 @@ function App() {
             <MoneyFilter currentMoney={currentMoney} onclickFilterHandler={onclickFilterHandler}/>
 
             {/*micro task 06*/}
-            <FullInput addMessage={addMessage}/>
+            {/*<FullInput addMessage={addMessage}/>*/}
+
+            <Input title={title} setTitle={setTitle}/>
+            <Button name={'+'} callBack={callBackButtonHandler}/>
             {message.map((m, index) =>
                 <div key={index}>{m.message}</div>)}
         </div>
