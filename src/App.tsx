@@ -3,13 +3,13 @@ import './App.css';
 import {TopCars} from "./Components/TopCars";
 import {Button} from "./Components/Button";
 import {MoneyFilter} from "./Components/MoneyFilter";
+import {FullInput} from "./Components/FullInput";
 
 export type FilterType = 'all' | 'dollars' | 'rubles';
 
 function App() {
 
     // micro task 02:
-
     const topCars = [
         {manufacturer: 'BMW', model: 'm5cs'},
         {manufacturer: 'Mercedes', model: 'e63s'},
@@ -17,7 +17,6 @@ function App() {
     ]
 
     //micro task 03 universal button:
-
     const button1foo = (subscriber: string, age: number, address: string) => {
         console.log(subscriber, age, address);
     }
@@ -26,7 +25,6 @@ function App() {
     }
 
     //micro task 04 hook useState:
-
     const [num, setNum] = useState<number>(0);
 
     const onClickNumHandler = () => {
@@ -37,7 +35,6 @@ function App() {
     }
 
     //micro task 05 Filter method:
-
     const [money, setMoney] = useState([
         {banknotes: 'dollars', value: 100, number: ' a1234567890'},
         {banknotes: 'dollars', value: 50, number: ' z1234567890'},
@@ -63,6 +60,18 @@ function App() {
         setFilter(nameButton);
     }
 
+    //micro task 06 input:
+    let [message, setMessage] = useState([
+        {message: 'message1'},
+        {message: 'message2'},
+        {message: 'message3'},
+    ])
+
+    const addMessage = (title: string) => {
+        let newMessage = {message: title}
+        setMessage([newMessage, ...message]);
+    }
+
     return (
         <div className="App">
             {/*micro task 02*/}
@@ -78,8 +87,12 @@ function App() {
             <Button name={'0'} callBack={onClickZeroHandler}/>
 
             {/*micro task 05*/}
-            <MoneyFilter currentMoney={currentMoney} onclickFilterHandler={onclickFilterHandler}
-            />
+            <MoneyFilter currentMoney={currentMoney} onclickFilterHandler={onclickFilterHandler}/>
+
+            {/*micro task 06*/}
+            <FullInput addMessage={addMessage}/>
+            {message.map((m, index) =>
+                <div key={index}>{m.message}</div>)}
         </div>
     );
 }
