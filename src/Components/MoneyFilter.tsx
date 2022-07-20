@@ -26,9 +26,10 @@ export const MoneyFilter: React.FC<MoneyFilterType> = ({currentMoney, onclickFil
                     )
                 })}
             </ul>
-            <Button name={'ALL'} callBack={() => onclickFilterHandler('all')}/>
-            <Button name={'RUBLES'} callBack={() => onclickFilterHandler('rubles')}/>
-            <Button name={'DOLLARS'} callBack={() => onclickFilterHandler('dollars')}/>
+
+            <div style={{marginLeft: '20px'}}><Button name={'ALL'} callBack={() => onclickFilterHandler('all')}/>
+                <Button name={'RUBLES'} callBack={() => onclickFilterHandler('rubles')}/>
+                <Button name={'DOLLARS'} callBack={() => onclickFilterHandler('dollars')}/></div>
         </div>
     );
 };
